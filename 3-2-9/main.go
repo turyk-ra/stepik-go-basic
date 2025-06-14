@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 )
@@ -22,7 +23,7 @@ func main() {
 	y2 := sc.Text()
 	y2Int, _ := strconv.Atoi(y2)
 
-	if x1Int+1 == x2Int && y1Int+1 == y2Int {
+	if math.Abs(float64(x2Int)-float64(x1Int)) == math.Abs(float64(y2Int)-float64(y1Int)) {
 		fmt.Print("YES")
 	} else {
 		fmt.Print("NO")
