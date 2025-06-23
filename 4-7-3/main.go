@@ -1,25 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var x int
 	fmt.Scan(&x)
-	sum := 0
+	var maxSum, sum float64 = 0, 0
+	numOfMaxSum := 0
 	for i := x; i > 1; i-- {
 		j := i
-		//fmt.Println("j---", j)
 		for j > 0 {
 			last := j % 10
-			//fmt.Println("last ---", last)
-			sum += last
-			//fmt.Println("sum ---", sum)
+			sum += float64(last)
 			j = j / 10
-			//fmt.Println("j again ==", j)
 		}
-		fmt.Println(i, sum)
+		if sum > maxSum || (sum == maxSum && i < numOfMaxSum) {
+			maxSum = sum
+			numOfMaxSum = i
+		}
 		sum = 0
-		//TODO
 	}
-
+	fmt.Println(numOfMaxSum, maxSum)
 }
