@@ -1,14 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
 
 func main() {
-	var x int
-	fmt.Scan(&x)
-	num := 0
-	for x > 0 {
-		last := x % 10
-		x = x / 10
+	var res string
+	sc := bufio.NewScanner(os.Stdin)
+	_ = sc.Scan()
+	x := sc.Text()
+	intX, _ := strconv.Atoi(x)
+	for intX > 0 {
+		for i := 0; i <= intX; i++ {
+			if i == intX%10 {
+				//fmt.Println(intX % 10)
+				res += strconv.Itoa(i)
+
+			}
+		}
+		intX = intX / 10
 	}
-	//TODO
+	if res == x {
+		fmt.Print("YES")
+	} else {
+		fmt.Print("NO")
+	}
 }
